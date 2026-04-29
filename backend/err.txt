@@ -1,0 +1,11 @@
+Traceback (most recent call last):
+  File "C:\Users\venka\Downloads\AgentScope\backend\test_import.py", line 3, in <module>
+    import main
+  File "C:\Users\venka\Downloads\AgentScope\backend\main.py", line 33, in <module>
+    from api.deps import limiter
+  File "C:\Users\venka\Downloads\AgentScope\backend\api\deps.py", line 10, in <module>
+    from redteam.engine import RedTeamEngine
+  File "C:\Users\venka\Downloads\AgentScope\backend\redteam\engine.py", line 22
+    from core.models import SemanticAttributes, (
+                                                ^
+SyntaxError: invalid syntax

@@ -1,0 +1,313 @@
+/* ExecutionGraph — higher contrast styling */
+
+:root {
+    --eg-surface: rgba(14, 18, 28, 0.95);
+    --eg-panel: rgba(20, 26, 40, 0.9);
+    --eg-border: rgba(88, 120, 160, 0.35);
+    --eg-divider: rgba(255, 255, 255, 0.08);
+    --eg-shadow: 0 12px 36px rgba(6, 8, 14, 0.65);
+
+    --eg-text-primary: rgba(244, 246, 255, 0.98);
+    --eg-text-secondary: rgba(210, 218, 240, 0.78);
+    --eg-text-muted: rgba(190, 198, 220, 0.63);
+
+    --eg-accent: #5ab4ff;
+    --eg-accent-strong: #3d8bfd;
+    --eg-warn: #ffb347;
+    --eg-error: #ff6b81;
+    --eg-anomaly: #facc15;
+
+    --eg-node-bg: rgba(15, 20, 32, 0.9);
+    --eg-node-border: rgba(110, 140, 200, 0.4);
+    --eg-node-shadow: 0 8px 20px rgba(8, 10, 18, 0.55);
+}
+
+.eg-container {
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+    width: 100%;
+    background: linear-gradient(
+        145deg,
+        rgba(5, 8, 16, 0.95),
+        rgba(18, 22, 35, 0.92)
+    );
+    border-radius: 16px;
+    overflow: hidden;
+    border: 1px solid var(--eg-border);
+    box-shadow: var(--eg-shadow);
+}
+
+.eg-controls {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px 16px;
+    background: var(--eg-panel);
+    border-bottom: 1px solid var(--eg-divider);
+    backdrop-filter: blur(8px);
+}
+
+.eg-controls-left,
+.eg-controls-right {
+    display: flex;
+    gap: 6px;
+}
+
+.eg-control-btn {
+    padding: 8px 10px;
+    border-radius: 8px;
+    border: 1px solid rgba(255, 255, 255, 0.12);
+    background: rgba(14, 16, 24, 0.8);
+    color: var(--eg-text-primary);
+    font-size: 14px;
+    cursor: pointer;
+    transition:
+        border-color 0.15s ease,
+        transform 0.15s ease,
+        box-shadow 0.15s ease;
+}
+
+.eg-control-btn:hover {
+    border-color: rgba(90, 180, 255, 0.65);
+    box-shadow: 0 8px 18px rgba(58, 132, 247, 0.35);
+    transform: translateY(-1px);
+}
+
+.eg-control-btn:active {
+    transform: translateY(0);
+    box-shadow: none;
+}
+
+.eg-graph-wrapper {
+    flex: 1;
+    background: var(--eg-surface);
+    position: relative;
+}
+
+.eg-empty {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 100%;
+    color: var(--eg-text-muted);
+    font-size: 15px;
+    letter-spacing: 0.02em;
+}
+
+.eg-node {
+    padding: 10px;
+    border-radius: 10px;
+    background: var(--eg-node-bg);
+    border: 1px solid var(--eg-node-border);
+    box-shadow: var(--eg-node-shadow);
+    min-width: 180px;
+    max-width: 220px;
+    color: var(--eg-text-primary);
+    font-size: 12px;
+    transition:
+        border-color 0.2s ease,
+        box-shadow 0.2s ease,
+        transform 0.2s ease;
+}
+
+.eg-node:hover {
+    border-color: rgba(90, 180, 255, 0.8);
+    box-shadow: 0 12px 26px rgba(50, 110, 210, 0.35);
+    transform: translateY(-2px);
+}
+
+.eg-node--selected {
+    border-color: var(--eg-accent);
+    box-shadow: 0 0 0 2px rgba(90, 180, 255, 0.35);
+}
+
+.eg-node--error {
+    border-color: var(--eg-error);
+    background: rgba(74, 16, 26, 0.85);
+}
+
+.eg-node--anomaly {
+    border-color: var(--eg-anomaly);
+    background: rgba(65, 50, 12, 0.85);
+}
+
+.eg-node--critical {
+    border-width: 2px;
+    border-color: var(--eg-accent-strong);
+}
+
+.eg-node-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 6px;
+    font-size: 11px;
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    color: var(--eg-text-muted);
+}
+
+.eg-node-name {
+    font-weight: 600;
+    color: var(--eg-text-primary);
+    margin-bottom: 4px;
+}
+
+.eg-node-meta {
+    display: flex;
+    justify-content: space-between;
+    font-size: 11px;
+    color: var(--eg-text-secondary);
+    gap: 6px;
+}
+
+.eg-stats-panel {
+    background: var(--eg-panel);
+    border-top: 1px solid var(--eg-divider);
+    padding: 12px 16px;
+}
+
+.eg-stats-header {
+    font-size: 12px;
+    text-transform: uppercase;
+    letter-spacing: 0.09em;
+    color: var(--eg-text-muted);
+    margin-bottom: 8px;
+}
+
+.eg-stats-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));
+    gap: 10px;
+}
+
+.eg-stat-item {
+    padding: 10px;
+    border-radius: 10px;
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    background: rgba(12, 16, 28, 0.7);
+    color: var(--eg-text-primary);
+}
+
+.eg-stat-label {
+    font-size: 11px;
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    color: var(--eg-text-muted);
+}
+
+.eg-stat-value {
+    font-size: 16px;
+    font-weight: 600;
+    margin-top: 4px;
+}
+
+.eg-stat-value.eg-error {
+    color: var(--eg-error);
+}
+
+.eg-stat-value.eg-warning {
+    color: var(--eg-warn);
+}
+
+.eg-legend {
+    background: var(--eg-panel);
+    border-top: 1px solid var(--eg-divider);
+    padding: 12px 16px;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+    color: var(--eg-text-secondary);
+    font-size: 13px;
+}
+
+.eg-legend-title {
+    width: 100%;
+    font-size: 12px;
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    color: var(--eg-text-muted);
+}
+
+.eg-legend-line {
+    font-weight: 600;
+    letter-spacing: 0.1em;
+}
+
+.eg-legend-marker {
+    font-weight: 700;
+}
+
+.eg-container .react-flow__background,
+.eg-container .react-flow__pane {
+    background: transparent;
+}
+
+.eg-container .react-flow__controls button {
+    background: rgba(16, 20, 32, 0.85);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    color: var(--eg-text-primary);
+}
+
+.eg-container .react-flow__controls button:hover {
+    border-color: rgba(90, 180, 255, 0.45);
+}
+
+.eg-container .react-flow__edge {
+    stroke-linecap: round;
+}
+
+.eg-container .react-flow__edge.animated {
+    stroke-dasharray: 6;
+    animation: dashmove 0.6s linear infinite;
+}
+
+@keyframes dashmove {
+    to {
+        stroke-dashoffset: -12;
+    }
+}
+
+.eg-container .react-flow__edge-label {
+    background: rgba(5, 8, 16, 0.8);
+    color: var(--eg-text-secondary);
+    padding: 2px 6px;
+    border-radius: 4px;
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    font-size: 11px;
+}
+
+.eg-container .react-flow__handle {
+    width: 8px;
+    height: 8px;
+    background: var(--eg-accent-strong);
+    border: 2px solid rgba(12, 16, 26, 0.95);
+}
+
+@media (max-width: 768px) {
+    .eg-controls {
+        flex-direction: column;
+        gap: 10px;
+    }
+
+    .eg-stats-grid {
+        grid-template-columns: repeat(2, minmax(100px, 1fr));
+    }
+
+    .eg-node {
+        min-width: 150px;
+        max-width: 190px;
+    }
+}
+
+@media (max-width: 520px) {
+    .eg-stats-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .eg-legend {
+        flex-direction: column;
+        gap: 6px;
+    }
+}

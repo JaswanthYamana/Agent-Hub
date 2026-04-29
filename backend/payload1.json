@@ -1,0 +1,5 @@
+{
+  "scenario": "normal",
+  "attack_type": "prompt_injection",
+  "agent_target": "real"
+}

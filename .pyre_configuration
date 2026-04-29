@@ -1,0 +1,9 @@
+{
+  "source_directories": [
+    "C:\\Users\\venka\\Downloads\\AgentScope\\backend"
+  ],
+  "search_path": [
+    "C:\\Users\\venka\\Downloads\\AgentScope\\backend",
+    "C:\\Users\\venka\\Downloads\\AgentScope\\backend\\venv\\Lib\\site-packages"
+  ]
+}

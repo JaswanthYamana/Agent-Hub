@@ -1,0 +1,21 @@
+fastapi>=0.104.0
+uvicorn[standard]>=0.24.0
+pydantic>=2.5.0
+python-multipart>=0.0.6
+asyncpg>=0.29.0
+httpx>=0.25.0
+slowapi>=0.1.9
+
+# Real Agent dependencies
+langchain>=0.1.0
+langchain-openai>=0.1.0
+python-dotenv>=1.0.0
+requests>=2.31.0
+
+# LLM Judge providers (optional — only needed if OPENAI_API_KEY / ANTHROPIC_API_KEY is set)
+openai>=1.30.0
+anthropic>=0.29.0
+
+# Testing
+pytest>=7.4.0
+pytest-asyncio>=0.23.0
