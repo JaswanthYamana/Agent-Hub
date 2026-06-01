@@ -26,13 +26,13 @@
 
 ## 🔭 Overview
 
-**AgentScope** is a full-stack observability and adversarial testing platform for autonomous AI agents. It functions as a **black-box + white-box flight recorder and testing laboratory**: every reasoning step, tool call, parameter, and intermediate decision is captured as an OpenTelemetry-compatible span, visualised as an interactive execution DAG, and evaluated through a multi-dimensional reliability scoring engine.
+**Agent Hub** is a full-stack observability and adversarial testing platform for autonomous AI agents. It functions as a **black-box + white-box flight recorder and testing laboratory**: every reasoning step, tool call, parameter, and intermediate decision is captured as an OpenTelemetry-compatible span, visualised as an interactive execution DAG, and evaluated through a multi-dimensional reliability scoring engine.
 
 ### The Core Thesis
 
-> *An AI agent can produce a correct-looking final answer while its execution trajectory is silently broken, dangerous, or adversarially compromised. Output-level validators cannot see this — AgentScope can.*
+> *An AI agent can produce a correct-looking final answer while its execution trajectory is silently broken, dangerous, or adversarially compromised. Output-level validators cannot see this — Agent Hub can.*
 
-Traditional LLM evaluation measures what the agent *says*. AgentScope measures what the agent *does* — every tool call, every parameter, every reasoning step — and detects deviations from the expected workflow, security policy violations, and adversarial attacks in real time.
+Traditional LLM evaluation measures what the agent *says*. Agent Hub measures what the agent *does* — every tool call, every parameter, every reasoning step — and detects deviations from the expected workflow, security policy violations, and adversarial attacks in real time.
 
 ---
 
@@ -124,7 +124,7 @@ Run the same task `k` times in parallel and compute the empirical pass rate — 
 
 ```
 ┌─────────────────────────────────────────────────────────────────┐
-│                          AgentScope                             │
+│                          Agent Hub                             │
 ├─────────────────────────────────────────────────────────────────┤
 │              React SPA (Vite)  ·  frontend-react/               │
 │   React Flow DAG  •  Recharts  •  Zustand  •  React Router DOM  │
@@ -180,8 +180,8 @@ Run the same task `k` times in parallel and compute the empirical pass rate — 
 ### 1 · Clone the Repository
 
 ```bash
-git clone https://github.com/yaswanthsetty/AgentScope.git
-cd AgentScope
+git clone https://github.com/yaswanthsetty/Agent Hub.git
+cd Agent Hub
 ```
 
 ### 2 · Set Up the Backend
@@ -268,7 +268,7 @@ The test suite covers:
 
 ## ✈️ Running the Real Agent
 
-The real agent (`backend/agents/real_agent.py`) is a LangChain-powered flight booking assistant that connects to live flight APIs and is fully instrumented with the AgentScope SDK.
+The real agent (`backend/agents/real_agent.py`) is a LangChain-powered flight booking assistant that connects to live flight APIs and is fully instrumented with the Agent Hub SDK.
 
 ```bash
 cd backend
@@ -291,7 +291,7 @@ The agent streams spans to `http://localhost:8000` in real time. Open the **Exec
 
 ## 🐋 Running Local LLM with Ollama (Optional)
 
-You can run AgentScope entirely offline for real agent logic, red-teaming, and LLM-as-a-judge capabilities by using a local Ollama container.
+You can run Agent Hub entirely offline for real agent logic, red-teaming, and LLM-as-a-judge capabilities by using a local Ollama container.
 
 1. Start the Ollama container via Docker Compose:
 ```bash
@@ -516,7 +516,7 @@ export OTEL_EXPORTER_OTLP_ENDPOINT=http://localhost:8000
 export OTEL_EXPORTER_OTLP_PROTOCOL=http/json
 ```
 
-The `/v1/traces` endpoint accepts the standard OTLP JSON format and normalises spans to the AgentScope schema automatically.
+The `/v1/traces` endpoint accepts the standard OTLP JSON format and normalises spans to the Agent Hub schema automatically.
 
 ### Viewing Results
 
@@ -716,7 +716,7 @@ The platform relies strictly on PostgreSQL via `asyncpg`. The schema consists of
 
 ## 🔬 Research Foundation
 
-AgentScope is directly grounded in published academic and industry research:
+Agent Hub is directly grounded in published academic and industry research:
 
 | Paper / Standard | Contribution |
 |---|---|
@@ -737,7 +737,7 @@ The full research survey is available in [`Agentic AI Reliability Research Repor
 ## 📁 Project Structure
 
 ```
-AgentScope/
+Agent Hub/
 ├── backend/                        # FastAPI backend
 │   ├── main.py                     # API entrypoint — all routes
 │   ├── sdk.py                      # Standalone Python tracing SDK
