@@ -1,6 +1,6 @@
 <div align="center">
 
-<h1>🛫 AgentScope</h1>
+<h1>🛫 Agent Hub</h1>
 <h3>AI Agent Reliability & Red-Teaming Observability Platform</h3>
 
 <p>
